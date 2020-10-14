@@ -5,7 +5,7 @@ module Erd
     isolate_namespace Erd
 
     initializer 'erd' do |app|
-      if Rails.env.development?
+      if Rails.env.development? || Rails.env.qa?
         ActiveSupport.on_load :after_initialize do
           Rails.application.routes.prepend do
             mount Erd::Engine, :at => '/erd'
